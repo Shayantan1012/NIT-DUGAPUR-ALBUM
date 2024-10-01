@@ -12,15 +12,14 @@ function App() {
 
   return (
     <div >
-          {/*<div>
+          <div>
       <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/events' element={<Events/>}/>
       <Route path='/mycampus' element={<MyCampus/>}/>
       </Routes>
-    </div>*/}
-    <FinalImagePage/>
     </div>
+\    </div>
 
   )
 }
