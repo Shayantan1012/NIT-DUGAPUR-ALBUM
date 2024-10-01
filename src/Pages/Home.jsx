@@ -12,10 +12,15 @@ import './HomeStyle.css';
 
 // import required modules
 import { Parallax, Pagination, Navigation } from 'swiper/modules';
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import  {getCampusImage} from "../Redux/Slices/CampusSlice";
 
 function Home(){
-
-
+const dispatch=useDispatch();
+useEffect(()=>{
+dispatch(getCampusImage());
+},[])
     return (
         <div className="flex flex-col h-screen bg-gradient-to-r from-cyan-100 to-cyan-400">
             <Header PageType={'Home'}/>
