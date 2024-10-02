@@ -13,9 +13,16 @@ import './styleDepartments.css';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 import Header from '../../Layout/Header';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function Departments(){
+  const navigate=useNavigate();
+  const handleImageClick = (image) => {
 
+    navigate('/finalImage',{state:{imageDetails:image}});
+  
+  };
+  
  const  DepartmentImages=useSelector((state)=> state.department.imageDetails)
   return (
     <div className='bg-gradient-to-r from-purple-500 to-pink-500 h-screen'>
@@ -40,12 +47,12 @@ function Departments(){
 {
   DepartmentImages.map((item)=>{
     return (
-    <SwiperSlide className='flex flex-col justify-center items-center border-solid bg-transparent '  key={item._id}>
+    <SwiperSlide  onClick={()=>handleImageClick(item.image)} className='images flex flex-col justify-center delay-100 items-center border-solid bg-transparent '  key={item._id}>
     <img src={item.image[0].imageURL} 
       alt="Event 1st Image"
       />
-    <div className='bg-slate-50 w-full rounded-md pb-5 shadow-lg flex flex-row justify-center bg-cyan-50'>
-      <h1 className='font-semibold text-xl italic font-sans  text-transparent bg-gradient-to-l from-cyan-200 to-cyan-500   bg-clip-text font-bold'>{item.departmentName}</h1>
+    <div className=' transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ... bg-slate-50 w-full rounded-md pb-5 shadow-lg flex flex-row justify-center bg-cyan-50'>
+      <h1 className='font-semibold text-xl italic font-sans  text-transparent bg-gradient-to-l from-cyan-200 to-cyan-500    bg-clip-text font-bold'>{item.departmentName}</h1>
     </div>
   </SwiperSlide>
     )

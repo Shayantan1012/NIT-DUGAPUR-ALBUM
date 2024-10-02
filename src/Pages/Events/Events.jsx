@@ -8,16 +8,22 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
 import './styleEvents.css';
-
 // import required modules
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 import Header from '../../Layout/Header';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function Events(){
 
+const navigate=useNavigate();
+
  const  EventImages=useSelector((state)=>state.event.imageDetails )
 
+ const handleImageClick = (image) => {
+  navigate('/finalImage',{state:{imageDetails:image}});
+
+};
   return (
     <div className='bg-gradient-to-r from-purple-500 to-pink-500 h-screen'>
         <Header PageType={'Events'}/>
@@ -41,12 +47,12 @@ function Events(){
 {
   EventImages.map((item)=>{
     return (
-    <SwiperSlide  key={item._id} className='flex flex-col justify-center items-center border-solid bg-transparent '>
+    <SwiperSlide  key={item._id} onClick={()=>handleImageClick(item.image)} className='flex flex-col justify-center items-center border-solid bg-transparent '>
     <img src={item.image[0].imageURL} 
-      alt="Event 1st Image"
+      alt="Event 1st Image" className="images"
       />
-    <div className='bg-slate-50 w-full rounded-md pb-5 shadow-lg flex flex-row justify-center bg-cyan-50'>
-      <h1 className='font-semibold text-xl italic font-sans  text-transparent bg-gradient-to-l from-cyan-200 to-cyan-500   bg-clip-text font-bold'>{item.eventName}</h1>
+    <div className=' transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ... bg-slate-50 w-full rounded-md pb-5 shadow-lg flex flex-row justify-center bg-cyan-50'>
+      <h1 className='font-bold text-2xl  playwrite-de-grund-font2  text-transparent bg-gradient-to-l from-orange-200 to-cyan-500  transition bg-clip-text font-bold'>{item.eventName}</h1>
     </div>
   </SwiperSlide>
     )

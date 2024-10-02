@@ -13,10 +13,16 @@ import './styleMyCampus.css';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 import Header from '../../Layout/Header';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function MyCampus(){
 const CampusImages=useSelector((state)=>state.campus.imageDetails)
+const navigate=useNavigate();
 
+const handleImageClick = (image) => {
+  navigate('/finalImage',{state:{imageDetails:image}});
+
+};
 
     return (
         <div className='bg-gradient-to-r from-purple-500 to-pink-500 h-screen'>
@@ -40,12 +46,12 @@ const CampusImages=useSelector((state)=>state.campus.imageDetails)
 {
   CampusImages.map((item)=>{
     return (
-    <SwiperSlide className='flex flex-col justify-center items-center border-solid bg-transparent ' key={item._id} >
+    <SwiperSlide className='flex flex-col justify-center items-center border-solid bg-transparent ' onClick={()=>handleImageClick(item.image)} key={item._id} >
     <img src={item.image[0].imageURL} 
       alt="Event 1st Image"
       />
     <div className='bg-slate-50 w-full rounded-md pb-5 shadow-lg flex flex-row justify-center bg-cyan-50'>
-      <h1 className='font-semibold text-xl italic font-sans  text-transparent bg-gradient-to-l from-cyan-200 to-cyan-500   bg-clip-text font-bold'>{item.placeName}</h1>
+      <h1 className='font-semibold text-xl  font-mono  text-transparent bg-gradient-to-l from-orange-200 to-cyan-500  transition bg-clip-text font-bold'>{item.placeName}</h1>
     </div>
   </SwiperSlide>
     )

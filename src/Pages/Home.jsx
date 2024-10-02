@@ -69,7 +69,7 @@ console.log("This is the homepage Images-->",randomImages);
               return (
                 <SwiperSlide key={images._id} className="bg-transparent">
                   <img src={images.imageURL} className="w-full h-full"/>
-                  <div className="absolute  w-full h-full flex items-end justify-start  pl-7 pb-6">
+                  <div className="absolute  w-full h-full flex items-end justify-start bg-transparent  pl-7 pb-6">
                   <h1 className="text-white text-xl font-mono font-bold">
                     {images.description}
                   </h1>

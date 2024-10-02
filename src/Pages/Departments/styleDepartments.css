@@ -34,4 +34,12 @@ body {
     border-radius: 10px;
     border: 1px solid cornflowerblue;
   }
+  .images{
+    border-radius: 20px;
+    transition: transform 0.3s ease, filter 0.3s ease;  
+   }
   
+   .images:hover{
+    transform: scale(1.05); /* Slight enlargement */
+    filter: brightness(0.9); /* Slightly darkens the image */
+   }

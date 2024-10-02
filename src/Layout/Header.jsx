@@ -1,9 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import logo from '../assets/logo.webp'
-
 function Header({PageType}){
 const navigate=useNavigate();
-
     return (
         <div className="flex pb-2 flex-row justify-between items-center bg-gradient-to-r from-purple-500 to-pink-500 ">
             <span className="p-3 font-semibold  shadow-md rounded-lg   "> 
@@ -31,7 +29,7 @@ const navigate=useNavigate();
             {
                 PageType=='Home'?
                 <h1 className='w-full h-full flex flex-col justify-center items-center text-6xl 
-                font-extrabold italic font-mono uppercase text-transparent font-mono bg-yellow-300 to-yellow-800 bg-clip-text '> Campus Chronicles</h1>
+                font-extrabold italic font-mono uppercase text-transparent font-mono bg-yellow-300 to-yellow-800 bg-clip-text  satisfy-regular' > Campus Chronicles</h1>
                 :null
             }
 

@@ -13,7 +13,16 @@ import './FinalImageStyle.css';
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
-function FinalImagePagePresentation(){
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+
+function FinalImagePagePresentation(ImagesDetails){
     const progressCircle = useRef(null);
     const progressContent = useRef(null);
     const onAutoplayTimeLeft = (s, time, progress) => {
@@ -21,17 +30,17 @@ function FinalImagePagePresentation(){
       progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
 
     }
-const [swiperRef, setSwiperRef] = useState(null);
+   const  images=ImagesDetails.imageDetails.imageDetails
 
-//const Images
+    const randomImages = shuffleArray(images)
 
+    if(randomImages.length>10)randomImages=randomImages.slice(0,10);
     return (
 <div className="flex flex-col h-screen  bg-gradient-to-r from-purple-500 to-pink-500 ">
 <Header PageType={'FinalImage'}/>
-
 <div style={{ overflow: 'scroll', whiteSpace: 'nowrap' }}>
 
-      <Swiper
+<Swiper
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
@@ -46,28 +55,40 @@ const [swiperRef, setSwiperRef] = useState(null);
         onAutoplayTimeLeft={onAutoplayTimeLeft}
         className=""
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+      {randomImages.map((images)=>{
+      return (
+        <SwiperSlide key={images._id}>
+        <img  src={images.imageURL} className="w-full h-full"/>
+
+        </SwiperSlide>
+    )
+        })                
+       }     
         <div className="autoplay-progress" slot="container-end">
           <svg viewBox="0 0 48 48" ref={progressCircle}>
             <circle cx="24" cy="24" r="20"></circle>
           </svg>
           <span ref={progressContent}></span>
         </div>
-      </Swiper>      
-</div>
+</Swiper> 
 
 {/* Create Grid Page */ }
-<div className="Create-Grid">
+<div className="Gallery">
+{images.map((items)=>{
+return (
+<div className="">
+<img
+className="images rounded-lg"
+src={items.imageURL}/>
+</div>  
+)
+})
+}
+</div>
+
 
 </div>
+
     </div>
 
 

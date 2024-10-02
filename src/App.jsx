@@ -6,24 +6,22 @@ import MyCampus from './Pages/Campus/MyCampus'
 import ImageType from './Admin/ImageType'
 import EventType from './Admin/EventType'
 import Department from './Admin/Department'
-import FinalImagePage from './Pages/FinalImagePage/FinalImagePage'
 import Departments from './Pages/Departments/Deaprtment'
-
+import FinalImagePageLogic from './Pages/FinalImagePage/FinalImagePageLogic'
 function App() {
 
   return (
     <div >
           <div>
       <Routes>
-   { /*  <Route path='/' element={<Home/>}/>
+    <Route path='/' element={<Home/>}/>
       <Route path='/events' element={<Events/>}/>
       <Route path='/mycampus' element={<MyCampus/>}/>
       <Route path='/departments' element={<Departments/>}/>
-     */ }
-     <Route path='/finalImage' element={<FinalImagePage/>}/>
+     <Route path='/finalImage' element={<FinalImagePageLogic/>}/>
       </Routes>
     </div>
-\    </div>
+    </div>
 
   )
 }

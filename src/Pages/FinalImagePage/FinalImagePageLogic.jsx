@@ -1,7 +1,16 @@
+import { useLocation } from "react-router-dom";
+import FinalImagePagePresentation from "./FinalImagePage";
+
+function FinalImagePageLogic(){
+    const location =useLocation();
+    const imageDetails=location.state;
 
 
-function FinalImagePageLogic(ImageDetails){
-
+return (
+    <div>
+<FinalImagePagePresentation imageDetails={imageDetails} />
+    </div>
+)
 }
 
 export default FinalImagePageLogic;

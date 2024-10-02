@@ -29,4 +29,22 @@
     object-fit: cover;
     border:none;
   }
+@media screen and (min-width: 760px){
+  .Gallery {
+    column-count: 3;
+
+  }
+
+    }
+
+.images{
+  border-radius: 20px;
+  padding: 2;
+  padding-bottom: 3px;
+  margin: 3px;
+  transition: transform 0.3s ease, filter 0.3s ease;   }
   
+  .images:hover {
+    transform: scale(1.05); /* Slight enlargement */
+    filter: brightness(0.9); /* Slightly darkens the image */
+  }  
