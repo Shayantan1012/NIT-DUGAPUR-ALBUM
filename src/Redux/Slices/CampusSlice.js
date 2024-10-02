@@ -7,12 +7,10 @@ const initialState={
 export const   getCampusImage=createAsyncThunk('/campus/getImage',async(data)=>{
 try{
      const  campusImages=await axiosInstance.get('/user/campus');
-
     if(campusImages.data.success){
         toast.success("Successfully Loaded Campus Images!!")
     }
     else toast.error("Can't Load Campus images !!!")
-    console.log(campusImages.data.data.response)
     return campusImages?.data?.data?.response;
 
 }
@@ -31,8 +29,9 @@ const campusImageSlice=createSlice({
     extraReducers:(builder)=>{
 builder
 .addCase(getCampusImage.fulfilled,(state,action)=>{
-    console.log("-------------------->.>>>");
+
     state.imageDetails=action?.payload;
+    console.log("This is State Images in Campus--->",state.imageDetails);
 
 })
     }

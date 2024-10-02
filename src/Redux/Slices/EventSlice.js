@@ -4,16 +4,14 @@ import toast from "react-hot-toast";
 const initialState={
     imageDetails:[],
 }
-export const   getDepartmentImage=createAsyncThunk('/campus/getImage',async(data)=>{
+export const  getEventImage=createAsyncThunk('/event/getImage',async(data)=>{
 try{
-     const  DepartmentImages=await axiosInstance.get('/user/Department');
-
-    if(DepartmentImages.data.success){
-        toast.success("Successfully Loaded Campus Images!!")
+     const  EventImages=await axiosInstance.get('/user/event');
+    if(EventImages.data.success){
+        toast.success("Successfully Loaded Event Images!!")
     }
-    else toast.error("Can't Load Campus images !!!")
-    console.log(DepartmentImages.data.data.response)
-    return DepartmentImages?.data?.data?.response;
+    else toast.error("Can't Load Event images !!!")
+    return EventImages?.data?.data?.response;
 
 }
 catch(error){
@@ -24,21 +22,20 @@ console.log("Something Went Wrong!!!");
 
 
 
-const DepartmentImageSlice=createSlice({
-    name:'CampusImage',
+const EventImageSlice=createSlice({
+    name:'EventImage',
     initialState,
-    reducer:{},
+    reducers:{},
     extraReducers:(builder)=>{
 builder
-.addCase(getCampusImage.fulfilled,(state,action)=>{
-    console.log("-------------------->.>>>");
+.addCase(getEventImage.fulfilled,(state,action)=>{
     state.imageDetails=action?.payload;
-
+    console.log("This is Event Images in Campus--->",state.imageDetails);
 })
     }
 
 })
 
 
-export default DepartmentImageSlice.reducer;
+export default EventImageSlice.reducer;
 

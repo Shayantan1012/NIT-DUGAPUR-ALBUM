@@ -3,7 +3,6 @@ import Footer from "../Layout/Footer"
 import Dashboard from "../Layout/Dashboard"
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -11,39 +10,76 @@ import 'swiper/css/navigation';
 import './HomeStyle.css';
 
 // import required modules
-import { Parallax, Pagination, Navigation } from 'swiper/modules';
-import { useDispatch } from "react-redux";
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import  {getCampusImage} from "../Redux/Slices/CampusSlice";
+import { getDepartmentImage } from "../Redux/Slices/DepertmentSlice";
+
+import { getEventImage } from "../Redux/Slices/EventSlice";
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 
 function Home(){
 const dispatch=useDispatch();
+
 useEffect(()=>{
-dispatch(getCampusImage());
+  dispatch(getCampusImage());
+  dispatch(getEventImage());
+  dispatch(getDepartmentImage());
 },[])
+const state1=useSelector((state)=>(state.campus.imageDetails))
+const state2=useSelector((state)=>(state.department.imageDetails))
+const state3=useSelector((state)=>(state.event.imageDetails))
+const HomePageImages=[...state1,...state2,...state3];
+const randomImages = shuffleArray(HomePageImages)
+
+if(randomImages.length>10)randomImages=randomImages.slice(0,10);
+console.log("This is the homepage Images-->",randomImages);
+
     return (
-        <div className="flex flex-col h-screen bg-gradient-to-r from-cyan-100 to-cyan-400">
+        <div className="flex flex-col h-screen  bg-gradient-to-r from-purple-500 to-pink-500 ">
             <Header PageType={'Home'}/>
             <div className="flex flex-row h-full">
             <Dashboard/>
             <Swiper
-        dir="rtl"
-        navigation={true}
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         pagination={{
           clickable: true,
         }}
-        modules={[Navigation, Pagination]}
-        className=" bg-slate-100"
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper"
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+
+      {
+        randomImages.map((item)=>{
+        return   item.image.map((images)=>{
+              return (
+                <SwiperSlide key={images._id} className="bg-transparent">
+                  <img src={images.imageURL} className="w-full h-full"/>
+                  <div className="absolute  w-full h-full flex items-end justify-start  pl-7 pb-6">
+                  <h1 className="text-white text-xl font-mono font-bold">
+                    {images.description}
+                  </h1>
+                </div>         
+           </SwiperSlide>
+              )
+                      })
+        })
+
+      }
       </Swiper>
             </div>
 <Footer/>

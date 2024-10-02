@@ -1,4 +1,4 @@
-import Header from "../Layout/Header"
+import Header from "../../Layout/Header"
 
 import React, { useRef, useState } from 'react';
 // Import Swiper React components
@@ -13,16 +13,17 @@ import './FinalImageStyle.css';
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
-function FinalImagePage(){
+function FinalImagePagePresentation(){
     const progressCircle = useRef(null);
     const progressContent = useRef(null);
     const onAutoplayTimeLeft = (s, time, progress) => {
       progressCircle.current.style.setProperty('--progress', 1 - progress);
       progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
-  
+
     }
 const [swiperRef, setSwiperRef] = useState(null);
 
+//const Images
 
     return (
 <div className="flex flex-col h-screen  bg-gradient-to-r from-purple-500 to-pink-500 ">
@@ -61,61 +62,10 @@ const [swiperRef, setSwiperRef] = useState(null);
           <span ref={progressContent}></span>
         </div>
       </Swiper>      
-    
-      <Swiper
-        onSwiper={setSwiperRef}
-        slidesPerView={3}
-        centeredSlides={true}
-        spaceBetween={30}
-        pagination={{
-          type: 'fraction',
-        }}
-        navigation={true}
-        modules={[Pagination, Navigation]}
-        className="mySwiper"
-      >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-      </Swiper>
+</div>
 
-      <Swiper
-        onSwiper={setSwiperRef}
-        slidesPerView={3}
-        centeredSlides={true}
-        spaceBetween={30}
-        pagination={{
-          type: 'fraction',
-        }}
-        navigation={true}
-        modules={[Pagination, Navigation]}
-        className="mySwiper"
-      >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-      </Swiper>
-
-
-      <Swiper
-        onSwiper={setSwiperRef}
-        slidesPerView={3}
-        centeredSlides={true}
-        spaceBetween={30}
-        pagination={{
-          type: 'fraction',
-        }}
-        navigation={true}
-        modules={[Pagination, Navigation]}
-        className="mySwiper"
-      >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-      </Swiper>
+{/* Create Grid Page */ }
+<div className="Create-Grid">
 
 </div>
     </div>
@@ -124,4 +74,4 @@ const [swiperRef, setSwiperRef] = useState(null);
     )
 }
 
-export default FinalImagePage
+export default FinalImagePagePresentation

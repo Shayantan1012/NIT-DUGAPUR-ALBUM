@@ -16,12 +16,16 @@ const navigate=useNavigate();
             <div className="p-3 flex items-center justify-between">
             <button onClick={()=>navigate('/')} className='p-3 font-semibold text-lg shadow-md font-mono hover:shadow-lg rounded-lg mr-2 border-1'>Home</button>
             <button onClick={()=>navigate('/events')} className='p-3 font-semibold text-lg shadow-md font-mono hover:shadow-lg rounded-lg mr-2'>Events</button>
+            <button onClick={()=>navigate('/departments')} className='p-3 font-semibold text-lg shadow-md  font-mono hover:shadow-lg rounded-lg mr-2 border-1'>Departments</button>
+
             </div>:null
             }
             {PageType=='Events'?
             <div className="p-3 flex items-center justify-between">
             <button onClick={()=>navigate('/')} className='p-3 font-semibold text-lg shadow-md font-mono hover:shadow-lg rounded-lg mr-2 border-1'>Home</button>
             <button onClick={()=>navigate('/mycampus')} className='p-3 font-semibold text-lg shadow-md  font-mono hover:shadow-lg rounded-lg mr-2 border-1'>MyCampus</button>
+            <button onClick={()=>navigate('/departments')} className='p-3 font-semibold text-lg shadow-md  font-mono hover:shadow-lg rounded-lg mr-2 border-1'>Departments</button>
+
             </div>:null
             }
             {
@@ -36,7 +40,15 @@ const navigate=useNavigate();
             <button onClick={()=>navigate('/')} className='p-3 font-semibold text-lg shadow-md font-mono hover:shadow-lg rounded-lg mr-2 border-1'>Home</button>
             <button onClick={()=>navigate('/mycampus')} className='p-3 font-semibold text-lg shadow-md  font-mono hover:shadow-lg rounded-lg mr-2 border-1'>MyCampus</button>
             <button onClick={()=>navigate('/events')} className='p-3 font-semibold text-lg shadow-md  font-mono hover:shadow-lg rounded-lg mr-2 border-1'>Events</button>
-            <button onClick={()=>navigate('/events')} className='p-3 font-semibold text-lg shadow-md  font-mono hover:shadow-lg rounded-lg mr-2 border-1'>Departements</button>
+            <button onClick={()=>navigate('/departments')} className='p-3 font-semibold text-lg shadow-md  font-mono hover:shadow-lg rounded-lg mr-2 border-1'>Departements</button>
+            </div>:null
+            }
+            {PageType=='Departments'?
+            <div className="p-3 flex items-center justify-between">
+            <button onClick={()=>navigate('/')} className='p-3 font-semibold text-lg shadow-md font-mono hover:shadow-lg rounded-lg mr-2 border-1'>Home</button>
+            <button onClick={()=>navigate('/mycampus')} className='p-3 font-semibold text-lg shadow-md  font-mono hover:shadow-lg rounded-lg mr-2 border-1'>MyCampus</button>
+            <button onClick={()=>navigate('/events')} className='p-3 font-semibold text-lg shadow-md  font-mono hover:shadow-lg rounded-lg mr-2 border-1'>Events</button>
+
             </div>:null
             }
 

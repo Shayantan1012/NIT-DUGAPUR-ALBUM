@@ -14,7 +14,7 @@ function Dashboard() {
                         <button onClick={()=>navigate('/events')} className="text-gray-200 hover:text-gray-700 text-xl mx-3">Events</button>
                     </a> 
                     <a href="#" className="flex px-6 py-3 mt-3 items-center shadow-md rounded-lg  hover:shadow-lg">
-                        <button onClick={()=>navigate('/events')} className="text-gray-200 hover:text-gray-700 text-xl mx-3">Departments</button>
+                        <button onClick={()=>navigate('/departments')} className="text-gray-200 hover:text-gray-700 text-xl mx-3">Departments</button>
                     </a> 
                     <a href="#" className="flex px-6 py-3 mt-3 items-center shadow-md rounded-lg hover:shadow-lg">
                         <button  className="text-gray-200 hover:text-gray-700 text-xl mx-3">About</button>
