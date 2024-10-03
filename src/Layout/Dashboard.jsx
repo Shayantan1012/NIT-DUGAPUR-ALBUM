@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 function Dashboard() {
     const navigate=useNavigate();
     return (
-        <div className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg">
+        <div className="h-full bg-gradient-to-r  from-purple-500 to-pink-500 rounded-lg">
         
             <nav className="mt-2">
                 <div className="flex-col justify-center">

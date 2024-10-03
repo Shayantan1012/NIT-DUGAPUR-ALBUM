@@ -1,16 +1,23 @@
 
-.swiper-container {
+.Container {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-  .swiper {
-    width: 100%;
-    height: 100%;
+  .Swiper {
+    width: 95%;
+    height: 80%;
     background: transparent;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    overflow: hidden;
+    align-content: center;
+    
+
   }
   
-  .swiper-slide {
+  .SwiperSlide {
     text-align: center;
     font-size: 18px;
     background: #fff;
@@ -22,27 +29,35 @@
     height: 100%;
   }
   
-  .swiper-slide img {
-    display: block;
+  .SwiperSlide-img{
+
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     border:none;
   }
-@media screen and (min-width: 760px){
+
+
   .Gallery {
-    column-count: 3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap:1rem;
 
   }
 
-    }
 
 .images{
+  flex-basis: 20%;
   border-radius: 20px;
-  padding: 2;
+  padding: 2px;
   padding-bottom: 3px;
   margin: 3px;
-  transition: transform 0.3s ease, filter 0.3s ease;   }
+  transition: transform 0.3s ease, filter 0.3s ease; 
+  width: 300px;
+  height:300px
+  }
   
   .images:hover {
     transform: scale(1.05); /* Slight enlargement */

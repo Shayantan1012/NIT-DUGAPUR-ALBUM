@@ -3,7 +3,7 @@ function Footer(){
 
     return (
         <footer className="text-gray-600 body-font bg-gradient-to-r from-purple-500 to-pink-500 ">
-        <div className="  border-t-2 border-cyan-500">
+        <div className="  border-t-1 border-cyan-500">
           <div className="container flex flex-col flex-wrap px-2 py-2 mx-auto sm:flex-row">
             <p className="text-sm text-center text-blue-800 hover:text-blue-400 sm:text-left">
                 &copy; nit@dgp officials                    

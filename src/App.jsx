@@ -8,6 +8,7 @@ import EventType from './Admin/EventType'
 import Department from './Admin/Department'
 import Departments from './Pages/Departments/Deaprtment'
 import FinalImagePageLogic from './Pages/FinalImagePage/FinalImagePageLogic'
+import OnlyImage from './Pages/FinalImagePage/OnlyImage'
 function App() {
 
   return (
@@ -18,8 +19,11 @@ function App() {
       <Route path='/events' element={<Events/>}/>
       <Route path='/mycampus' element={<MyCampus/>}/>
       <Route path='/departments' element={<Departments/>}/>
-     <Route path='/finalImage' element={<FinalImagePageLogic/>}/>
-      </Routes>
+      <Route path='/finalImage' element={<FinalImagePageLogic/>}/>
+      <Route path='/onlyImage' element={<OnlyImage/>}/>
+    </Routes>
+
+
     </div>
     </div>
 

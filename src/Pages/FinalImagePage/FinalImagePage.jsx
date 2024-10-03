@@ -9,9 +9,10 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-import './FinalImageStyle.css';
+import styles from  './FinalImageStyle.module.css';
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { useNavigate } from "react-router-dom";
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -23,6 +24,7 @@ function shuffleArray(array) {
 
 
 function FinalImagePagePresentation(ImagesDetails){
+  const navigate=useNavigate();
     const progressCircle = useRef(null);
     const progressContent = useRef(null);
     const onAutoplayTimeLeft = (s, time, progress) => {
@@ -35,10 +37,18 @@ function FinalImagePagePresentation(ImagesDetails){
     const randomImages = shuffleArray(images)
 
     if(randomImages.length>10)randomImages=randomImages.slice(0,10);
+
+  function handelImage(ImageDetails){
+
+  navigate('/onlyImage',{state:{ImageDetails}})
+
+  }
+
     return (
+
 <div className="flex flex-col h-screen  bg-gradient-to-r from-purple-500 to-pink-500 ">
 <Header PageType={'FinalImage'}/>
-<div style={{ overflow: 'scroll', whiteSpace: 'nowrap' }}>
+<div style={{ overflow: 'scroll', whiteSpace: 'nowrap' }} className={styles.Container}>
 
 <Swiper
         spaceBetween={30}
@@ -53,12 +63,13 @@ function FinalImagePagePresentation(ImagesDetails){
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         onAutoplayTimeLeft={onAutoplayTimeLeft}
-        className=""
+        className={styles.Swiper}
       >
       {randomImages.map((images)=>{
       return (
-        <SwiperSlide key={images._id}>
-        <img  src={images.imageURL} className="w-full h-full"/>
+        <SwiperSlide key={images._id}  className={styles.SwiperSlide}>
+        <img  src={images.imageURL} 
+        />
 
         </SwiperSlide>
     )
@@ -71,15 +82,17 @@ function FinalImagePagePresentation(ImagesDetails){
           <span ref={progressContent}></span>
         </div>
 </Swiper> 
-
 {/* Create Grid Page */ }
-<div className="Gallery">
+<div className={styles.Gallery}>
 {images.map((items)=>{
 return (
-<div className="">
+<div >
 <img
-className="images rounded-lg"
-src={items.imageURL}/>
+className={styles.images}
+src={items.imageURL}
+onClick={()=>handelImage(items)}
+/>
+
 </div>  
 )
 })
@@ -88,8 +101,8 @@ src={items.imageURL}/>
 
 
 </div>
+</div>
 
-    </div>
 
 
     )

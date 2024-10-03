@@ -7,7 +7,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-import './HomeStyle.css';
+import styles from './HomeStyle.module.css';
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
@@ -42,11 +42,10 @@ const randomImages = shuffleArray(HomePageImages)
 
 if(randomImages.length>10)randomImages=randomImages.slice(0,10);
 console.log("This is the homepage Images-->",randomImages);
-
     return (
         <div className="flex flex-col h-screen  bg-gradient-to-r from-purple-500 to-pink-500 ">
             <Header PageType={'Home'}/>
-            <div className="flex flex-row h-full">
+            <div className="flex flex-row h-screen bg-gradient-to-r from-purple-500 to-pink-500">
             <Dashboard/>
             <Swiper
         spaceBetween={30}
@@ -60,27 +59,35 @@ console.log("This is the homepage Images-->",randomImages);
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
+        className={styles.Swiper}
       >
 
-      {
-        randomImages.map((item)=>{
-        return   item.image.map((images)=>{
-              return (
-                <SwiperSlide key={images._id} className="bg-transparent">
-                  <img src={images.imageURL} className="w-full h-full"/>
-                  <div className="absolute  w-full h-full flex items-end justify-start bg-transparent  pl-7 pb-6">
-                  <h1 className="text-white text-xl font-mono font-bold">
-                    {images.description}
-                  </h1>
-                </div>         
-           </SwiperSlide>
-              )
-                      })
-        })
+      
+{
+  randomImages.map((item) => {
+    console.log("...............",item); // Log the current item
 
-      }
-      </Swiper>
+    // Assuming item.images is the array of images you want to map over
+    return item.image.map((images) => { 
+      console.log("......", images); // Log the current image object
+
+      return (
+        <SwiperSlide key={images._id}  className={styles.SwiperSlide}>
+          <img src={images.imageURL} className="w-full h-full" alt={images.description} />
+          <div className="absolute w-full h-full flex items-end justify-start bg-transparent pl-7 pb-6">
+            <h1 className="text-white text-xl font-mono font-bold">
+              {images.description}
+            </h1>
+          </div>         
+        </SwiperSlide>
+      );
+    });
+  })
+}
+        
+
+      
+            </Swiper>
             </div>
 <Footer/>
         </div>

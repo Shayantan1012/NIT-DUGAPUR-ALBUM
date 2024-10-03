@@ -8,6 +8,7 @@ const navigate=useNavigate();
            <img
            className='w-[60px] h-[60px]'
            src={logo}
+           onClick={()=>navigate('/')}
            />
             </span>
             {PageType=='MyCampus'?
