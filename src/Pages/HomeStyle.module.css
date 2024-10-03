@@ -20,7 +20,7 @@
     text-align: center;
     font-size: 18px;
     background: #fff;
-  
+    border-radius: 20px;
     /* Center slide text vertically */
     display: flex;
     justify-content: center;
@@ -28,11 +28,12 @@
     height: 80%;
   }
   
-  .SwiperSlide-img{
+  .images{
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     border:none;
+    border-radius: 20px;
   }
 
 
