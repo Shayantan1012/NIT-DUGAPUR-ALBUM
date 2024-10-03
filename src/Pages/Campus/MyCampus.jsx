@@ -27,6 +27,11 @@ const handleImageClick = (image) => {
     return (
         <div className='bg-gradient-to-r from-purple-500 to-pink-500 h-screen'>
             <Header PageType={'MyCampus'}/>
+            <div className='flex flex-row justyfy-center pt-5 bg-gradient-to-r from-purple-500 to-pink-500'>
+  <span className='flex  pb-7 font-extrabold justify-center merienda-font3 w-full text-transparent text-5xl bg-gradient-to-l from-slate-100 to-slate-400   bg-clip-text font-bold'>
+   !! Let's Explore Our College Campus!!     
+  </span>
+  </div>
 <Swiper
         effect={'coverflow'}
         grabCursor={true}
@@ -48,10 +53,10 @@ const handleImageClick = (image) => {
     return (
     <SwiperSlide className='flex flex-col justify-center items-center border-solid bg-transparent ' onClick={()=>handleImageClick(item.image)} key={item._id} >
     <img src={item.image[0].imageURL} 
-      alt="Event 1st Image"
+      alt="Event 1st Image" className='images'
       />
-    <div className='bg-slate-50 w-full rounded-md pb-5 shadow-lg flex flex-row justify-center bg-cyan-50'>
-      <h1 className='font-semibold text-xl  font-mono  text-transparent bg-gradient-to-l from-orange-200 to-cyan-500  transition bg-clip-text font-bold'>{item.placeName}</h1>
+    <div className=' transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ... bg-slate-50 w-full rounded-md pb-5 shadow-md flex flex-row justify-center bg-cyan-50'>
+      <h1 className='font-bold   playwrite-de-grund-font2  text-transparent bg-gradient-to-l from-orange-200 to-cyan-500 text-2xl transition bg-clip-text font-bold'>{item.placeName}</h1>
     </div>
   </SwiperSlide>
     )
@@ -60,11 +65,6 @@ const handleImageClick = (image) => {
 
 }
       </Swiper>
-      <div className='flex flex-row justyfy-center pt-5 pb-5 bg-gradient-to-r from-purple-500 to-pink-500'>
-      <span className='flex text-3xl font-extrabold justify-center w-full text-transparent bg-gradient-to-l from-blue-200 to-blue-700   bg-clip-text font-bold'>
-       !! Lets Explore Our College !!     
-      </span>
-      </div>
     </div>    
     )
 

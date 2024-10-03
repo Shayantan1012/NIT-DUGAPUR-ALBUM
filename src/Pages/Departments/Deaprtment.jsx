@@ -27,6 +27,11 @@ function Departments(){
   return (
     <div className='bg-gradient-to-r from-purple-500 to-pink-500 h-screen'>
         <Header PageType={'Departments'}/>
+        <div className='flex flex-row justyfy-center pt-5 bg-gradient-to-r from-purple-500 to-pink-500'>
+  <span className='flex  pb-7 font-extrabold justify-center merienda-font3 w-full text-transparent text-5xl bg-gradient-to-l from-slate-100 to-slate-400   bg-clip-text font-bold'>
+   !! Lets Explore Our Departments!!     
+  </span>
+  </div>
 <Swiper
     effect={'coverflow'}
     grabCursor={true}
@@ -49,10 +54,10 @@ function Departments(){
     return (
     <SwiperSlide  onClick={()=>handleImageClick(item.image)} className='images flex flex-col justify-center delay-100 items-center border-solid bg-transparent '  key={item._id}>
     <img src={item.image[0].imageURL} 
-      alt="Event 1st Image"
+      alt="Event 1st Image" className='images'
       />
-    <div className=' transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ... bg-slate-50 w-full rounded-md pb-5 shadow-lg flex flex-row justify-center bg-cyan-50'>
-      <h1 className='font-semibold text-xl italic font-sans  text-transparent bg-gradient-to-l from-cyan-200 to-cyan-500    bg-clip-text font-bold'>{item.departmentName}</h1>
+    <div className=' transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ... bg-slate-50 w-full rounded-md pb-5 shadow-md flex flex-row justify-center bg-cyan-50'>
+      <h1 className='font-bold text-2xl  playwrite-de-grund-font2  text-transparent bg-gradient-to-l from-orange-200 to-cyan-500  transition bg-clip-text font-bold'>{item.departmentName}</h1>
     </div>
   </SwiperSlide>
     )
@@ -61,11 +66,6 @@ function Departments(){
 
 }
   </Swiper>
-  <div className='flex flex-row justyfy-center pt-5 bg-gradient-to-r from-purple-500 to-pink-500'>
-  <span className='flex text-3xl pb-7 font-extrabold justify-center w-full text-transparent bg-gradient-to-l from-blue-100 to-blue-800   bg-clip-text font-bold'>
-   !! Lets Explore Our College Departments!!     
-  </span>
-  </div>
 </div>    
 )
 

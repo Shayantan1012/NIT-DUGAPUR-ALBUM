@@ -8,16 +8,16 @@ function Dashboard() {
             <nav className="mt-2">
                 <div className="flex-col justify-center">
                     <a href="#" className="flex px-6 py-3 mt-3 items-center shadow-md rounded-lg  hover:shadow-lg">
-                        <button onClick={()=>navigate('/mycampus')} className="text-gray-200 hover:text-gray-700 text-xl mx-3">My Campus</button>
+                        <button onClick={()=>navigate('/mycampus')} className="text-gray-200 hover:text-gray-700 text-2xl satisfy-regular font-bold mx-3">My Campus</button>
                     </a> 
                     <a href="#" className="flex px-6 py-3 mt-3 items-center shadow-md rounded-lg  hover:shadow-lg">
-                        <button onClick={()=>navigate('/events')} className="text-gray-200 hover:text-gray-700 text-xl mx-3">Events</button>
+                        <button onClick={()=>navigate('/events')} className="text-gray-200 hover:text-gray-700 text-2xl satisfy-regular mx-3">Events</button>
                     </a> 
                     <a href="#" className="flex px-6 py-3 mt-3 items-center shadow-md rounded-lg  hover:shadow-lg">
-                        <button onClick={()=>navigate('/departments')} className="text-gray-200 hover:text-gray-700 text-xl mx-3">Departments</button>
+                        <button onClick={()=>navigate('/departments')} className="text-gray-200 hover:text-gray-700 satisfy-regular text-2xl mx-3">Departments</button>
                     </a> 
                     <a href="#" className="flex px-6 py-3 mt-3 items-center shadow-md rounded-lg hover:shadow-lg">
-                        <button  className="text-gray-200 hover:text-gray-700 text-xl mx-3">About</button>
+                        <button  className="text-gray-200 hover:text-gray-700 satisfy-regular text-2xl mx-3">About</button>
                     </a> 
                 </div>
             </nav>
