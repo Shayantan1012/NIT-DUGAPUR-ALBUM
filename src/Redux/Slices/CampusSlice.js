@@ -20,7 +20,23 @@ console.log("Something Went Wrong!!!");
 }
 })
 
-
+export const UploadCampusIamge=createAsyncThunk('/admin/campus/imageUpload',async(data)=>{
+    try{
+    const response=await axiosInstance.post('/admin/campus',data);
+    if(!response){
+        toast.error("Unable to upload Image!!!")
+        return;
+    }
+    toast.success("Successfully upload Image!!!")
+    const apiResponse=await response;
+    return apiResponse ;
+    
+    }
+    catch(error){
+    console.log(error)
+    console.log("Unable to upload Event Image!!!");
+    }
+    })
 
 const campusImageSlice=createSlice({
     name:'CampusImage',

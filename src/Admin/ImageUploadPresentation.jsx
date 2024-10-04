@@ -1,8 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 
-function ImageUploadPresentation({handelFormSubmit,handelUserInput,handleImageChange,preViewImage}){
-
+function ImageUploadPresentation({handelFormSubmit,handelUserInput,handleImageChange,preViewImage,type}){
+const navigate=useNavigate();
     return (
 <div className="bg-gradient-to-r from-purple-500 to-pink-500 h-screen flex flex-col justify-between">
 <Header PageType={"FinalImage"}/>
@@ -23,7 +24,7 @@ preViewImage?
         <input
           type="file"
           id="imageUpload"
-          accept="image/*"
+          accept=".jpg, .jpeg, .png"
           className="hidden"
           onChange={handleImageChange}
         />   
@@ -50,7 +51,9 @@ preViewImage?
 
   
 <div className="basis-6/12 pr-4 mr-5 flex flex-col  items-start">
-<span className="satisfy-regular text-2xl mb-3"> Name of Event </span> 
+
+<form onSubmit={handelFormSubmit}>
+<span className="satisfy-regular text-2xl mb-3"> {(type==='EVENT')?"Name of the Event":(type==='CAMPUS')?"Name of the Place":"Name of the Department"} </span> 
 <input
         type='text'
         required
@@ -64,16 +67,22 @@ preViewImage?
         className='w-full h-[50px]  border border-gray-300  rounded-lg focus:border-indigo-500 sm:text-sm'
         />  
 
-<span className="satisfy-regular text-2xl mb-3 mt-4"> Description of the Event </span> 
+<span className="satisfy-regular text-2xl mb-3 mt-4">{(type==='EVENT')?"Description of the Event":(type==='CAMPUS')?"Description of the Place":"Description of the Department"}</span> 
 <textarea
     required
-    name="eventDescription"
-    id="eventDescription"
+    name="ImageDescription"
+    id="ImageDescription"
     placeholder="Provide a description of the event"
     className="w-full h-[100px] border border-gray-300 rounded-lg focus:border-indigo-500 sm:text-sm"
     onChange={handelUserInput}
   />
-<button onClick={handelFormSubmit}type='submit' className="w-full h-[50px] rounded-lg border-zinc-950 bg-orange-300 mt-[10px] satisfy-regular text-xl hover:bg-orange-400 delay-150 transition ease-in-out delay-150 hover:-translate-y-1">Submit</button>
+  
+<button  type="submit"  className="w-full h-[50px] rounded-lg border-zinc-950 bg-orange-300 mt-[10px] satisfy-regular text-xl hover:bg-orange-400 delay-150 transition ease-in-out delay-150 hover:-translate-y-1">Submit</button>
+
+</form>
+
+
+
 </div>
 </div>
 <Footer/>

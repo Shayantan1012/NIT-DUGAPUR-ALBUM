@@ -23,7 +23,7 @@ console.log("Something Went Wrong!!!");
 
 export const UploadEventIamge=createAsyncThunk('/admin/event/imageUpload',async(data)=>{
     try{
-    const response=await axiosInstance.post('/admin/event/',data);
+    const response=await axiosInstance.post('/admin/events',data);
     if(!response){
         toast.error("Unable to upload Image!!!")
         return;
