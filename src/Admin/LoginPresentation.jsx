@@ -29,7 +29,6 @@ function LoginPresentation({handelUserInput,handelFormSubmit}){
                         <label className="font-semibold">Password  <span className="text-red-500">*</span></label>
                         
                         <input
-                        type:text
                         className="w-full p-6 rounded-md h-9 mt-2 text-grey-700  border-2xl border-solid border-slate-900 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-200 "
                         type="text"
                         placeholder="*******"

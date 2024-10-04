@@ -1,10 +1,10 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 
 import axiosInstance from "../../Helper/axiosInstance";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 export const initialState={
-    isLoggedIn:localStorage.getItem('isLoggedIn')==='true'||'false',
+    isLoggedIn:localStorage.getItem('isLoggedIn')==='true',
     role:localStorage.getItem('role') || {},
     data:JSON.parse(localStorage.getItem('data'))||{}
 }
@@ -12,7 +12,6 @@ export const initialState={
 export const Login=createAsyncThunk('/admin/Login',async(data)=>{
 try{  
     const response=await axiosInstance.post('/admin/auth/login',data);
-
 if(!response){
     toast.error("Unable to Login!!!");
     return ;
@@ -28,6 +27,8 @@ console.log("Unable to Login!!");
 })
 
 
+
+
 const AuthSlice=createSlice({
     name:'Auth',
     initialState,
@@ -38,13 +39,14 @@ const AuthSlice=createSlice({
         state.isLoggedIn='true',
         state.role=action?.payload?.data?.data?.response?.adminData?.role,
         state.data=action?.payload?.data?.data?.response?.adminData,
-        localStorage.setItem('isLoggedIn',true),
+        localStorage.setItem('isLoggedIn','true'),
         localStorage.setItem('role',action?.payload?.data?.data?.response?.adminData?.role),
         localStorage.setItem('data',JSON.stringify(action?.payload?.data?.data?.response?.adminData))
         }
     )
 
     }
+
 })
 
 export default AuthSlice.reducer

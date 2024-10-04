@@ -65,11 +65,9 @@ console.log("This is the homepage Images-->",randomImages);
       
 {
   randomImages.map((item) => {
-    console.log("...............",item); // Log the current item
 
     // Assuming item.images is the array of images you want to map over
     return item.image.map((images) => { 
-      console.log("......", images); // Log the current image object
 
       return (
         <SwiperSlide key={images._id}  className={styles.SwiperSlide}>

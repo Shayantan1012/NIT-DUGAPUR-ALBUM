@@ -5,24 +5,24 @@ import { useDispatch } from "react-redux";
 import {Login} from '../Redux/Slices/AdminSlice'
 import { useNavigate } from "react-router-dom";
 function LoginLogic(){
-    const navigate=useNavigate();
+const navigate=useNavigate();
 const dispatch=useDispatch();
     const [LoginData,setLoginData]=useState({
         regNo:"",
         password:""
     })
-
     async function handelFormSubmit(e){
     e.preventDefault();
+    console.log(".......",LoginData)
+
     if(!LoginData.regNo ||!LoginData.password){
     toast.error("Please fill the all boxes!!!!");
     }
     const apiResponse=await dispatch(Login(LoginData));
     if(apiResponse)navigate('/')
+    else  toast.error("Login failed! Please check your credentials.")
         return ;
     }    
-
-
 
 
     function handelUserInput(e){
@@ -31,7 +31,10 @@ const dispatch=useDispatch();
             ...LoginData,
             [name]:value,
         })
+
     }
+
+
 
 return (
     <div>
