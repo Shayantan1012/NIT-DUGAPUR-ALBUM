@@ -22,9 +22,9 @@ const navigate=useNavigate();
 
  const  EventImages=useSelector((state)=>state.event.imageDetails )
 
- const handleImageClick = (image) => {
+ const handleImageClick = (image,name) => {
 
-  navigate('/finalImage',{state:{imageDetails:image}});
+  navigate('/finalImage',{state:{imageDetails:image,name:name,imagetype:'EVENT'}});
 
 };
   return (
@@ -63,12 +63,12 @@ const navigate=useNavigate();
 {
 EventImages.length ? EventImages.map((item)=>{
     return (
-    <SwiperSlide  key={item._id} onClick={()=>handleImageClick(item.image)}  className={styles.SwiperSlide} >
+    <SwiperSlide  key={item._id} onClick={()=>handleImageClick(item.image,item?.eventName)}  className={styles.SwiperSlide} >
     <img src={item.image[0]?(item?.image[0]?.imageURL):sorry} 
       alt="Event 1st Image" 
       />
     <div className=' w-[90%] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ... bg-slate-50  rounded-md pb-5 shadow-md flex flex-row justify-center item-center bg-cyan-50'>
-      <h1 className='font-bold text-2xl  playwrite-de-grund-font2  text-transparent bg-gradient-to-l from-orange-200 to-cyan-500  transition bg-clip-text font-bold'>{item.image[0]?(item?.eventName):"Sorry no Image Present"}</h1>
+      <h1 className='font-bold text-2xl  playwrite-de-grund-font2  text-transparent bg-gradient-to-l from-orange-200 to-cyan-500  transition bg-clip-text font-bold'>{(item?.eventName)}</h1>
     </div>
   </SwiperSlide>
     )

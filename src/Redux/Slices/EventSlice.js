@@ -21,6 +21,7 @@ console.log("Something Went Wrong!!!");
 })
 
 
+
 export const UploadEventIamge=createAsyncThunk('/admin/event/imageUpload',async(data)=>{
     try{
     const response=await axiosInstance.post('/admin/events',data);
@@ -40,6 +41,27 @@ export const UploadEventIamge=createAsyncThunk('/admin/event/imageUpload',async(
     })
     
 
+
+    export const DeleteEventIamge=createAsyncThunk('/admin/event/imageDelelte',async(data)=>{
+        try{
+        const response=await axiosInstance.delete(`/admin/events/${data.name}/${data.objectID}`);
+        if(!response){
+            toast.error("Unable to delete Image!!!")
+            return;
+        }
+        toast.success("Successfully remove Image!!!")
+        const apiResponse=await response;
+        return apiResponse ;
+        }
+        catch(error){
+        console.log(error)
+        console.log("Unable to remove Event Image!!!");
+        }
+        })
+        
+    
+    
+    
 
 
 const EventImageSlice=createSlice({

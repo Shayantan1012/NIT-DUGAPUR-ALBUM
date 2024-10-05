@@ -9,7 +9,6 @@ function OnlyImage(){
     const ImageDeatails=location.state
 const [dimension,setDimention]=useState({width:0 , height :0});
 const image_deatils=ImageDeatails.ImageDetails.imageURL
-
 useEffect(()=>{
     const img = new Image();
     img.src = image_deatils;
@@ -22,7 +21,6 @@ useEffect(()=>{
 const aspectRatio=dimension.width/dimension.height 
 let newWidth=1;
 let newHeight=1;
-console.log("-------->",(aspectRatio))
 
 if (aspectRatio <= 1.5 && aspectRatio >= 1) {
     newWidth = 500;
@@ -37,7 +35,7 @@ if (aspectRatio <= 1.5 && aspectRatio >= 1) {
 
     return(
 <div>
-<Header PageType={'FinalImage'} />
+<Header PageType={'OnlyImage'} />
 <div className="flex flex-col justify-center item-center bg-gradient-to-r from-purple-500 to-pink-500 w-screen h-screen p-4">
 <div className=" flex flex-row justify-center item-center">
 <img src={image_deatils} 

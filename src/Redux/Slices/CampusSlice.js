@@ -38,6 +38,26 @@ export const UploadCampusIamge=createAsyncThunk('/admin/campus/imageUpload',asyn
     }
     })
 
+    export const DeleteCampusIamge=createAsyncThunk('/admin/campus/imageDelelte',async(data)=>{
+        try{
+        const response=await axiosInstance.delete(`/admin/campus/${data.name}/${data.objectID}`);
+        if(!response){
+            toast.error("Unable to delete Image!!!")
+            return;
+        }
+        toast.success("Successfully remove Image!!!")
+        const apiResponse=await response;
+        return apiResponse ;
+        }
+        catch(error){
+        console.log(error)
+        console.log("Unable to remove Event Image!!!");
+        }
+        })
+        
+    
+
+
 const campusImageSlice=createSlice({
     name:'CampusImage',
     initialState,

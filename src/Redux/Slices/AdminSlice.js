@@ -4,7 +4,7 @@ import axiosInstance from "../../Helper/axiosInstance";
 import toast from "react-hot-toast";
 
 export const initialState={
-    isLoggedIn:localStorage.getItem('isLoggedIn')==='true',
+    isLoggedIn:localStorage.getItem('isLoggedIn')==='true'||false,
     role:localStorage.getItem('role') || {},
     data:JSON.parse(localStorage.getItem('data'))||{}
 }
@@ -26,8 +26,23 @@ console.log("Unable to Login!!");
 }
 })
 
-
-
+export const LogOut=createAsyncThunk('/admin/Logout',async(data)=>{
+    try{  
+        const response=await axiosInstance.post('/admin/auth/logout',data);
+    if(!response){
+        toast.error("Unable to LogOut!!!");
+        return ;
+    }
+        else toast.success("Successfully Logout!!");
+        const apiResponse=await response;
+        return apiResponse;
+    
+    }catch(error){
+    console.log(error);
+    console.log("Unable to Login!!");
+    }
+    })
+    
 
 const AuthSlice=createSlice({
     name:'Auth',
@@ -42,9 +57,20 @@ const AuthSlice=createSlice({
         localStorage.setItem('isLoggedIn','true'),
         localStorage.setItem('role',action?.payload?.data?.data?.response?.adminData?.role),
         localStorage.setItem('data',JSON.stringify(action?.payload?.data?.data?.response?.adminData))
+        localStorage.setItem('logoutState','false')
+
         }
     )
-
+    .addCase(LogOut.fulfilled,(state,action)=>{
+        state.isLoggedIn='false',
+        state.role='USER',
+        state.data={},
+        localStorage.setItem('isLoggedIn','false'),
+        localStorage.setItem('role','USER'),
+        localStorage.setItem('data',JSON.stringify({}))
+        localStorage.setItem('logoutState','true')
+        }
+    )
     }
 
 })

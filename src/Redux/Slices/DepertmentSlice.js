@@ -39,6 +39,26 @@ export const UploadDepartmentIamge=createAsyncThunk('/admin/department/imageUplo
     }
     })
 
+    export const DeleteDepartmentIamge=createAsyncThunk('/admin/departments/imageDelelte',async(data)=>{
+        try{
+        const response=await axiosInstance.delete(`/admin/departments/${data.name}/${data.objectID}`);
+        if(!response){
+            toast.error("Unable to delete Image!!!")
+            return;
+        }
+        toast.success("Successfully remove Image!!!")
+        const apiResponse=await response;
+        return apiResponse ;
+        }
+        catch(error){
+        console.log(error)
+        console.log("Unable to remove Event Image!!!");
+        }
+        })
+        
+    
+
+
 
 const DepartmentImageSlice=createSlice({
     name:'DepartmentImage',

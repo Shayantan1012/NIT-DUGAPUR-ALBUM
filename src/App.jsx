@@ -8,6 +8,7 @@ import FinalImagePageLogic from './Pages/FinalImagePage/FinalImagePageLogic'
 import OnlyImage from './Pages/FinalImagePage/OnlyImage'
 import LoginLogic from './Admin/LoginLogic'
 import ImageUpload from './Admin/ImageUpload'
+import AboutUs from './Pages/About'
 function App() {
 
   return (
@@ -21,7 +22,7 @@ function App() {
       <Route path='/departments' element={<Departments/>}/>
       <Route path='/finalImage' element={<FinalImagePageLogic/>}/>
       <Route path='/onlyImage' element={<OnlyImage/>}/>
-
+      <Route path='/aboutUs' element={<AboutUs/>}/>
       ////////////////
 
       <Route path='/admin/imageUpload' element={<ImageUpload/>}/>

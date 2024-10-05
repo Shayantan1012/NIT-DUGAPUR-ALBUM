@@ -38,7 +38,7 @@ const state1=useSelector((state)=>(state.campus.imageDetails))
 const state2=useSelector((state)=>(state.department.imageDetails))
 const state3=useSelector((state)=>(state.event.imageDetails))
 const HomePageImages=[...state1,...state2,...state3];
-const randomImages = shuffleArray(HomePageImages)
+var randomImages = shuffleArray(HomePageImages)
 
 if(randomImages.length>10)randomImages=randomImages.slice(0,10);
 console.log("This is the homepage Images-->",randomImages);

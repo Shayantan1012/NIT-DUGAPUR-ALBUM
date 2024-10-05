@@ -22,9 +22,8 @@ const role=localStorage.getItem('role') ||'USER'
 const CampusImages=useSelector((state)=>(state.campus.imageDetails))
 const navigate=useNavigate();
 
-const handleImageClick = (image) => {
-  navigate('/finalImage',{state:{imageDetails:image}});
-
+const handleImageClick = (image,name) => {
+  navigate('/finalImage',{state:{imageDetails:image,name:name,imagetype:'CAMPUS'}});
 };
 
     return (
@@ -62,12 +61,12 @@ const handleImageClick = (image) => {
      }{
   CampusImages.length ? CampusImages.map((item)=>{
     return (
-    <SwiperSlide className={styles.SwiperSlide} onClick={()=>handleImageClick(item?.image)} key={item._id} >
+    <SwiperSlide className={styles.SwiperSlide} onClick={()=>handleImageClick(item?.image,item?.placeName)} key={item._id} >
     <img src={item.image[0]?(item?.image[0]?.imageURL):sorry} 
       className='images'
       />
     <div className='w-[90%] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ... bg-slate-50  rounded-md pb-5 shadow-md flex flex-row justify-center bg-cyan-50'>
-      <h1 className='font-bold   playwrite-de-grund-font2  text-transparent bg-gradient-to-l from-orange-200 to-cyan-500 text-2xl transition bg-clip-text font-bold'>{item.image[0]?(item?.placeName):"Sorry no Image Present"}</h1>
+      <h1 className='font-bold   playwrite-de-grund-font2  text-transparent bg-gradient-to-l from-orange-200 to-cyan-500 text-2xl transition bg-clip-text font-bold'>{(item?.placeName)}</h1>
     </div>
   </SwiperSlide>
     )

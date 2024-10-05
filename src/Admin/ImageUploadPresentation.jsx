@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../Layout/Footer";
 import Header from "../Layout/Header";
 
-function ImageUploadPresentation({handelFormSubmit,handelUserInput,handleImageChange,preViewImage,type}){
+function ImageUploadPresentation({handelFormSubmit,handelUserInput,handleImageChange,preViewImage,type,name}){
 const navigate=useNavigate();
     return (
 <div className="bg-gradient-to-r from-purple-500 to-pink-500 h-screen flex flex-col justify-between">
-<Header PageType={"FinalImage"}/>
+<Header PageType={"ImageUpload"}/>
 <div className="flex flex-row">
 
 <div className=" w-full h-full pl-5 mt-7 basis-6/12">
@@ -53,19 +53,25 @@ preViewImage?
 <div className="basis-6/12 pr-4 mr-5 flex flex-col  items-start">
 
 <form onSubmit={handelFormSubmit}>
-<span className="satisfy-regular text-2xl mb-3"> {(type==='EVENT')?"Name of the Event":(type==='CAMPUS')?"Name of the Place":"Name of the Department"} </span> 
-<input
-        type='text'
-        required
-        minLength={5}
-        maxLength={20}
-        name='ImageName'
-        id='ImageName'
-        placeholder='Give the Name '
-        onChange={handelUserInput}
-
-        className='w-full h-[50px]  border border-gray-300  rounded-lg focus:border-indigo-500 sm:text-sm'
-        />  
+ {
+ !name ? 
+ <div>
+  <span className="satisfy-regular text-2xl mb-3"> {(type==='EVENT')?"Name of the Event":(type==='CAMPUS')?"Name of the Place":"Name of the Department"} </span> 
+  <input
+          type='text'
+          required
+          minLength={5}
+          maxLength={20}
+          name='ImageName'
+          id='ImageName'
+          placeholder='Give the Name '
+          onChange={handelUserInput}
+  
+          className='w-full h-[50px]  border border-gray-300  rounded-lg focus:border-indigo-500 sm:text-sm'
+          />  
+ </div>:null
+  
+}
 
 <span className="satisfy-regular text-2xl mb-3 mt-4">{(type==='EVENT')?"Description of the Event":(type==='CAMPUS')?"Description of the Place":"Description of the Department"}</span> 
 <textarea

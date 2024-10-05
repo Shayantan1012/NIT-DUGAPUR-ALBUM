@@ -20,9 +20,8 @@ function Departments(){
   const role=localStorage.getItem('role') ||'USER'
 
   const navigate=useNavigate();
-  const handleImageClick = (image) => {
-
-    navigate('/finalImage',{state:{imageDetails:image}});
+  const handleImageClick = (image,name) => {
+    navigate('/finalImage',{state:{imageDetails:image,name:name,imagetype:'DEPARTMENT'}});
   
   };
   
@@ -63,12 +62,12 @@ function Departments(){
 {
  DepartmentImages.length? DepartmentImages.map((item)=>{
     return (
-    <SwiperSlide  onClick={()=>handleImageClick(item.image)} className={styles.SwiperSlide}  key={item._id}>
+    <SwiperSlide  onClick={()=>handleImageClick(item.image,item?.departmentName)} className={styles.SwiperSlide}  key={item._id}>
     <img src={item.image[0]?(item?.image[0]?.imageURL):sorry}  
       alt="Event 1st Image" 
       />
     <div className=' w-[90%] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ... bg-slate-50  rounded-md pb-5 shadow-md flex flex-row justify-center bg-cyan-50'>
-      <h1 className='font-bold text-2xl  playwrite-de-grund-font2  text-transparent bg-gradient-to-l from-orange-200 to-cyan-500  transition bg-clip-text font-bold'>{item.image[0]?(item?.departmentName):"Sorry no Image Present"}</h1>
+      <h1 className='font-bold text-2xl  playwrite-de-grund-font2  text-transparent bg-gradient-to-l from-orange-200 to-cyan-500  transition bg-clip-text font-bold'>{(item?.departmentName)}</h1>
     </div>
   </SwiperSlide>
     )
