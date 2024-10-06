@@ -58,6 +58,24 @@ export const UploadDepartmentIamge=createAsyncThunk('/admin/department/imageUplo
         
     
 
+        export const ChangeDepertmentName=createAsyncThunk('/admin/departments/changeName',async({oldName,newName})=>{
+            try{
+            const response=await axiosInstance.post(`/admin/departments/${oldName}/${newName}`);
+            if(!response?.payload?.data?.success){
+                toast.error("Unable to Change Name!!!")
+                return;
+            }
+            toast.success("Successfully Change Name!!!")
+            const apiResponse=await response;
+            return apiResponse ;
+            
+            }
+            catch(error){
+            console.log(error)
+            console.log("Unable to upload Departments Name!!!");
+            }
+            })
+            
 
 
 const DepartmentImageSlice=createSlice({

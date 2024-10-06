@@ -55,7 +55,25 @@ export const UploadCampusIamge=createAsyncThunk('/admin/campus/imageUpload',asyn
         }
         })
         
-    
+        export const ChangeCampusName=createAsyncThunk('/admin/campus/changeName',async({oldName,newName})=>{
+            try{
+
+            const response=await axiosInstance.post(`/admin/campus/${oldName}/${newName}`);
+
+            if(!response?.data?.success){
+                toast.error("Unable to Change Name!!!")
+                return;
+            }
+            toast.success("Successfully Change Name!!!")
+            const apiResponse=await response;
+            return apiResponse ;
+            
+            }
+            catch(error){
+            console.log(error)
+            console.log("Unable to upload Event Nmae!!!");
+            }
+            })
 
 
 const campusImageSlice=createSlice({

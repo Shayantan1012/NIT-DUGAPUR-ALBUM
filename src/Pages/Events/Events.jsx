@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import sorry from '../../assets/sorry.svg'
@@ -6,27 +6,29 @@ import sorry from '../../assets/sorry.svg'
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
-
 import styles from'./styleEvents.module.css';
 // import required modules
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 import Header from '../../Layout/Header';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../../Layout/Footer';
 
 function Events(){
+
 const role=localStorage.getItem('role') ||'USER'
 const isLoggedIn=localStorage.getItem('isLoggedIn')
 const navigate=useNavigate();
 
- const  EventImages=useSelector((state)=>state.event.imageDetails )
 
+ const  EventImages=useSelector((state)=>state.event.imageDetails )
  const handleImageClick = (image,name) => {
 
   navigate('/finalImage',{state:{imageDetails:image,name:name,imagetype:'EVENT'}});
 
 };
+
+
   return (
     <div className='bg-gradient-to-r from-purple-500 to-pink-500  h-screen'>
         <Header PageType={'Events'}/>
@@ -63,14 +65,18 @@ const navigate=useNavigate();
 {
 EventImages.length ? EventImages.map((item)=>{
     return (
+      
     <SwiperSlide  key={item._id} onClick={()=>handleImageClick(item.image,item?.eventName)}  className={styles.SwiperSlide} >
     <img src={item.image[0]?(item?.image[0]?.imageURL):sorry} 
       alt="Event 1st Image" 
       />
-    <div className=' w-[90%] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ... bg-slate-50  rounded-md pb-5 shadow-md flex flex-row justify-center item-center bg-cyan-50'>
-      <h1 className='font-bold text-2xl  playwrite-de-grund-font2  text-transparent bg-gradient-to-l from-orange-200 to-cyan-500  transition bg-clip-text font-bold'>{(item?.eventName)}</h1>
+      <div className=' w-[90%] transition ease-in-out delay-150 h-[50px] hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ... bg-slate-50  rounded-md pb-2 shadow-md flex flex-col justify-center item-center bg-cyan-50'>
+      <h1 className='font-bold text-2xl  playwrite-de-grund-font2 flex flex-col items-center text-transparent bg-gradient-to-l from-orange-200 to-cyan-500  transition bg-clip-text font-bold'>
+        {(item?.eventName)}
+      </h1>
     </div>
   </SwiperSlide>
+  
     )
   }):
   (
@@ -82,7 +88,7 @@ EventImages.length ? EventImages.map((item)=>{
 
 }
   </Swiper>
-  <Footer/>
+       <Footer/>
 </div>    
 )
 

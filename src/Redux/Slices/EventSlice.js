@@ -25,10 +25,10 @@ console.log("Something Went Wrong!!!");
 
 
 
-export const UploadEventIamge=createAsyncThunk('/admin/event/imageUpload',async(data)=>{
+export const UploadEventImage=createAsyncThunk('/admin/event/imageUpload',async(data)=>{
     try{
     const response=await axiosInstance.post('/admin/events',data);
-    if(!response){
+    if(!response?.payload?.data?.success){
         toast.error("Unable to upload Image!!!")
         return;
     }
@@ -43,12 +43,28 @@ export const UploadEventIamge=createAsyncThunk('/admin/event/imageUpload',async(
     }
     })
     
-
+    export const ChangeNameDetails=createAsyncThunk('/admin/event/imageDelelte',async(data)=>{
+        try{
+        const response=await axiosInstance.post(`/admin/events/${data.oldName}/${data.newName}`);
+        if(!response?.payload?.data?.success){
+            toast.error("Unable to update Image Name!!!")
+            return;
+        }
+        toast.success("Successfully update Name!!!")
+        const apiResponse=await response;
+        return apiResponse ;
+        }
+        catch(error){
+        console.log(error)
+        console.log("Unable to remove Event Name!!!");
+        }
+        })
+        
 
     export const DeleteEventIamge=createAsyncThunk('/admin/event/imageDelelte',async(data)=>{
         try{
         const response=await axiosInstance.delete(`/admin/events/${data.name}/${data.objectID}`);
-        if(!response){
+        if(!response?.payload?.data?.success){
             toast.error("Unable to delete Image!!!")
             return;
         }
@@ -63,8 +79,24 @@ export const UploadEventIamge=createAsyncThunk('/admin/event/imageUpload',async(
         })
         
     
-    
-    
+        export const ChangeEventName=createAsyncThunk('/admin/event/changeName',async({oldName,newName})=>{
+            try{
+            const response=await axiosInstance.post(`/admin/events/${oldName}/${newName}`);
+            if(!response?.payload?.data?.success){
+                toast.error("Unable to Change Name!!!")
+                return;
+            }
+            toast.success("Successfully Change Name!!!")
+            const apiResponse=await response;
+            return apiResponse ;
+            
+            }
+            catch(error){
+            console.log(error)
+            console.log("Unable to upload Event Nmae!!!");
+            }
+            })
+            
 
 
 const EventImageSlice=createSlice({

@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import ImageUploadPresentation from "./ImageUploadPresentation";
 import { useEffect, useReducer, useState } from "react";
 import toast from "react-hot-toast";
-import { UploadEventIamge } from "../Redux/Slices/EventSlice";
+import { UploadEventImage } from "../Redux/Slices/EventSlice";
 import { useDispatch } from "react-redux";
 import { UploadCampusIamge } from "../Redux/Slices/CampusSlice";
 import { UploadDepartmentIamge } from "../Redux/Slices/DepertmentSlice";
@@ -96,7 +96,7 @@ function handelUserInput(e){
             formData.append( 'eventName',!name?EventDetails.ImageName:name)
             formData.append( 'description',EventDetails.ImageDescription)
             formData.append( 'imageURL',Image)
-    const response=await dispatch(UploadEventIamge(formData))
+    const response=await dispatch(UploadEventImage(formData))
         console.log("This is Event Upload Response->",response);
         if(response?.payload?.data?.error?.name==='TokenExpiredError'){
             toast.error("JWT Token Expires!!!")
