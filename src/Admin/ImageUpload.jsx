@@ -9,6 +9,7 @@ import { UploadDepartmentIamge } from "../Redux/Slices/DepertmentSlice";
 import { getCampusImage } from "../Redux/Slices/CampusSlice";
 import { getDepartmentImage } from "../Redux/Slices/DepertmentSlice";
 import { getEventImage } from "../Redux/Slices/EventSlice";
+import { LogOut } from "../Redux/Slices/AdminSlice";
 function ImageUpload(){
     const location =useLocation();
     const type=location?.state?.imageType;
@@ -97,6 +98,13 @@ function handelUserInput(e){
             formData.append( 'imageURL',Image)
     const response=await dispatch(UploadEventIamge(formData))
         console.log("This is Event Upload Response->",response);
+        if(response?.payload?.data?.error?.name==='TokenExpiredError'){
+            toast.error("JWT Token Expires!!!")
+            dispatch(LogOut());
+            navigate('/nitdgp/admin')
+            return ;
+        }
+    
         navigate(-1)
         if (response && response.payload && response.payload.data.success) {
             // Force re-render after successful deletion
@@ -115,6 +123,13 @@ function handelUserInput(e){
 
     const response=await dispatch(UploadCampusIamge(formData))
         console.log("This is CAMPUS Upload Response->",response);
+        if(response?.payload?.data?.error?.name==='TokenExpiredError'){
+            toast.error("JWT Token Expires!!!")
+            dispatch(LogOut());
+            navigate('/nitdgp/admin')
+            return ;
+        }
+    
         navigate(-1)
         if (response && response.payload && response.payload.data.success) {
             // Force re-render after successful deletion
@@ -135,6 +150,13 @@ function handelUserInput(e){
 
     const response=await dispatch(UploadDepartmentIamge(formData))
         console.log("This is DEPARTMENT Upload Response->",response);
+        if(response?.payload?.data?.error?.name==='TokenExpiredError'){
+            toast.error("JWT Token Expires!!!")
+            dispatch(LogOut());
+            navigate('/nitdgp/admin')
+            return ;
+        }
+    
         navigate(-1)
         if (response && response.payload && response.payload.data.success) {
             // Force re-render after successful deletion

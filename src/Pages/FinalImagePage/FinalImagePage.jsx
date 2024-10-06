@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux";
 import { DeleteCampusIamge, getCampusImage } from "../../Redux/Slices/CampusSlice";
 import { DeleteDepartmentIamge, getDepartmentImage } from "../../Redux/Slices/DepertmentSlice";
 import  toast  from "react-hot-toast";
+import { LogOut } from "../../Redux/Slices/AdminSlice";
 
 function shuffleArray(array) {
 if (array.length!=0){
@@ -79,6 +80,13 @@ console.log(name)
 if(imageType==='EVENT'){
 const response=await Dispatch(DeleteEventIamge({objectID,name}))
 console.log("This is Deleted response->>>>",response);
+if(response?.payload?.data?.error?.name==='TokenExpiredError'){
+  toast.error("JWT Token Expires!!!")
+  Dispatch(LogOut());
+  navigate('/nitdgp/admin')
+  return ;
+}
+
 if (response && response.payload && response.payload.data.success) {
   // Force re-render after successful deletion
   forceUpdate();
@@ -88,7 +96,13 @@ return response;
 else if(imageType==='CAMPUS'){
   const response=await Dispatch(DeleteCampusIamge({objectID,name}))
   console.log("This is Deleted response->>>>",response);
-  if (response && response.payload && response.payload.data.success) {
+  if(response?.payload?.data?.error?.name==='TokenExpiredError'){
+    toast.error("JWT Token Expires!!!")
+    Dispatch(LogOut());
+    navigate('/nitdgp/admin')
+    return ;
+}
+if (response && response.payload && response.payload.data.success) {
     // Force re-render after successful deletion
     forceUpdate();
   }
@@ -97,6 +111,13 @@ else if(imageType==='CAMPUS'){
   if(imageType==='DEPARTMENT'){
     const response=await Dispatch(DeleteDepartmentIamge({objectID,name}))
     console.log("This is Deleted response->>>>",response);
+    if(response?.payload?.data?.error?.name==='TokenExpiredError'){
+      toast.error("JWT Token Expires!!!")
+      Dispatch(LogOut());
+      navigate('/nitdgp/admin')
+      return ;
+  }
+
     if (response && response.payload && response.payload.data.success) {
       // Force re-render after successful deletion
       forceUpdate();
