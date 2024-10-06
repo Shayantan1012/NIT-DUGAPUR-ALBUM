@@ -9,13 +9,13 @@ import OnlyImage from './Pages/FinalImagePage/OnlyImage'
 import LoginLogic from './Admin/LoginLogic'
 import ImageUpload from './Admin/ImageUpload'
 import AboutUs from './Pages/About'
+import RegisterAdmin from './Admin/RegisterAdmin'
 function App() {
 
   return (
     <div >
           <div>
       <Routes>
-      <Route path='/nitdgp/admin/' element={<LoginLogic/>}/>
     <Route path='/' element={<Home/>}/>
       <Route path='/events' element={<Events/>}/>
       <Route path='/mycampus' element={<MyCampus/>}/>
@@ -24,9 +24,9 @@ function App() {
       <Route path='/onlyImage' element={<OnlyImage/>}/>
       <Route path='/aboutUs' element={<AboutUs/>}/>
       ////////////////
-
+      <Route path='/nitdgp/admin/' element={<LoginLogic/>}/>
       <Route path='/admin/imageUpload' element={<ImageUpload/>}/>
-
+      <Route path='/nitdgp/admin/adminRegistration' element={<RegisterAdmin/>}/>
     </Routes>
 
 

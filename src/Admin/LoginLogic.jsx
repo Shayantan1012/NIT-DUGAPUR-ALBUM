@@ -3,10 +3,11 @@ import LoginPresentation from "./LoginPresentation";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import {Login} from '../Redux/Slices/AdminSlice'
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 function LoginLogic(){
 const navigate=useNavigate();
 const dispatch=useDispatch();
+const location=useLocation();
     const [LoginData,setLoginData]=useState({
         regNo:"",
         password:""
@@ -14,15 +15,19 @@ const dispatch=useDispatch();
     async function handelFormSubmit(e){
     e.preventDefault();
     console.log(".......",LoginData)
-
     if(!LoginData.regNo ||!LoginData.password){
     toast.error("Please fill the all boxes!!!!");
     }
     const apiResponse=await dispatch(Login(LoginData));
-    if(apiResponse)navigate('/')
-    else  toast.error("Login failed! Please check your credentials.")
+    if(apiResponse){
+        if(location.state==='FromRegistration')navigate('/nitdgp/admin/adminRegistration')
+        else   navigate('/')
+
+    }
+      else toast.error("Login failed! Please check your credentials.")
         return ;
     }    
+
 
 
     function handelUserInput(e){

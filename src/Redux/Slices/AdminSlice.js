@@ -28,6 +28,8 @@ console.log("Unable to Login!!");
 
 export const LogOut=createAsyncThunk('/admin/Logout',async(data)=>{
     try{  
+        const role=localStorage.getItem('role');
+if(role==='ADMIN')localStorage.setItem('logoutState','true')
         const response=await axiosInstance.post('/admin/auth/logout',data);
     if(!response){
         toast.error("Unable to LogOut!!!");
@@ -42,7 +44,23 @@ export const LogOut=createAsyncThunk('/admin/Logout',async(data)=>{
     console.log("Unable to Login!!");
     }
     })
-    
+
+    export const createAccount=createAsyncThunk('/admin/createAccount',async(data)=>{
+        try{
+        
+        const response=await axiosInstance.post('/nit-dgp/admin/',data);
+        console.log("This is Registration response->",response);
+        if(response)toast.success(response.data.message);
+        if(!response)toast.error("Unable to create User!!!")
+        const apiResponse=await response;
+        return apiResponse;
+        
+        }catch(error){
+        console.log(error);
+        console.log("Unable to create Admin!!!");
+        }
+        
+        })    
 
 const AuthSlice=createSlice({
     name:'Auth',
@@ -68,9 +86,9 @@ const AuthSlice=createSlice({
         localStorage.setItem('isLoggedIn','false'),
         localStorage.setItem('role','USER'),
         localStorage.setItem('data',JSON.stringify({}))
-        localStorage.setItem('logoutState','true')
         }
     )
+
     }
 
 })
