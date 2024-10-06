@@ -70,15 +70,19 @@ if(name.imageType==='CAMPUS'){
         }
             }
     return (
-<div className="">
-<h1>Give the  Name</h1> 
+<div className="merienda-font3 text-md flex flex-col justify-begin items-begin">
+<h1 className="flex justify-center mb-2 text-slate-100">Give the  Name</h1> 
 <input
 type="text"
-placeholder="Give the Suitable Name"
+placeholder="Give a Suitable Name"
 name="newName"
 onChange={(e)=>setNewName(e.target.value)}
+className="rounded-md h-[30px] mr-2"
 />
-<button onClick={handelChangeName}>Enter</button> 
+<div className="flex flex-row mt-1 justify-between hover:opacity-90 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 p-1 font-semibold bg-yellow-300 text-lg shadow-md  satisfy-regular hover:shadow-xl hover:bg-yellow-400 rounded-lg mr-2 border-1 hover:opacity-90 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110">
+<button onClick={handelChangeName} className="ml-1" >Enter</button> 
+<button onClick={()=>name.onClose()} className="mr-1">Cancel</button> 
+</div>
 </div>
     )
 }

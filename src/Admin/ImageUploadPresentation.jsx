@@ -69,7 +69,7 @@ preViewImage?
   
           className='w-full h-[50px]  border border-gray-300  rounded-lg focus:border-indigo-500 sm:text-sm'
           />  
- </div>:null
+ </div>:<div className="satisfy-regular text-2xl mb-3">{name}</div>
   
 }
 

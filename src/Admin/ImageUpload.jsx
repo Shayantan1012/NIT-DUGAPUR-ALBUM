@@ -106,7 +106,7 @@ function handelUserInput(e){
         }
     
         navigate(-1)
-        if (response && response.payload && response.payload.data.success) {
+        if (response || response.payload || response.payload.data.success) {
             // Force re-render after successful deletion
             forceUpdate();
           }
