@@ -4,7 +4,7 @@ import { LogOut } from '../Redux/Slices/AdminSlice';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 function Header({PageType,name,imageType}){
-    const dipatch=useDispatch();
+const dipatch=useDispatch();
 const navigate=useNavigate();
 const location =useLocation();
 const role=localStorage.getItem('role')||'USER'
@@ -12,6 +12,7 @@ const LogoutState=localStorage.getItem('logoutState')
 const isLoggedIn=localStorage.getItem('isLoggedIn')
 async function handelLogout(){
 const response =await dipatch(LogOut());
+navigate('/');
 return response;
 }
 async function handelLogIn(){
