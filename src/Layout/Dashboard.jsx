@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
     const navigate=useNavigate();
+    //Hello
     return (
         <div className="h-full bg-gradient-to-r  from-purple-500 to-pink-500 rounded-lg">
         
